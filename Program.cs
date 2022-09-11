@@ -1,4 +1,9 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using HrDbProject.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<HrDbProjectContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("HrDbProjectContext") ?? throw new InvalidOperationException("Connection string 'HrDbProjectContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
