@@ -9,11 +9,15 @@ namespace HrDbProject.Models
         [Key]
         public int Id { get; set; }
 
-        public string? DeptName { get; set; }
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+        public string DeptName { get; set; }
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
         public bool IsActive { get; set; }
 
-        public ICollection<Employee>? Employees { get; set; }
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+        public ICollection<Employee> Employees { get; set; }
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
     }
 
@@ -25,15 +29,19 @@ namespace HrDbProject.Models
         public int Id { get; set; }
         [ForeignKey("Department")]
 
-        public int FKDeptId { get; set; } 
-        
-        public string? EmpName { get; set; }
+        public int FKDeptId { get; set; }
+
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+        public string EmpName { get; set; }
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
         public decimal Salary { get; set; }
 
         public bool IsActive { get; set; }
 
-        public Department? Department { get; set; }
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+        public Department Department { get; set; }
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
         public int Age { get; set; }
     }

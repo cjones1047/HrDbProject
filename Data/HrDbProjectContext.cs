@@ -15,5 +15,6 @@ namespace HrDbProject.Data
         }
 
         public DbSet<HrDbProject.Models.Employee> Employees { get; set; } = default!;
+        public DbSet<HrDbProject.Models.Department> Departments { get; set; } = default!;
     }
 }

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using HrDbProject.Data;
 using HrDbProject.Models;
 
-namespace HrDbProject.Views
+namespace HrDbProject.Controllers
 {
     public class EmployeesController : Controller
     {
@@ -48,7 +48,7 @@ namespace HrDbProject.Views
         // GET: Employees/Create
         public IActionResult Create()
         {
-            ViewData["FKDeptId"] = new SelectList(_context.Set<Department>(), "Id", "Id");
+            ViewData["FKDeptId"] = new SelectList(_context.Set<Department>(), "Id", "DeptName");
             return View();
         }
 
@@ -57,7 +57,7 @@ namespace HrDbProject.Views
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FKDeptId,EmpName,Salary,IsActive")] Employee employee)
+        public async Task<IActionResult> Create([Bind("Id,FKDeptId,EmpName,Salary,IsActive,Age")] Employee employee)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +65,7 @@ namespace HrDbProject.Views
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FKDeptId"] = new SelectList(_context.Set<Department>(), "Id", "Id", employee.FKDeptId);
+            ViewData["FKDeptId"] = new SelectList(_context.Set<Department>(), "Id", "DeptName", employee.FKDeptId);
             return View(employee);
         }
 
@@ -82,7 +82,7 @@ namespace HrDbProject.Views
             {
                 return NotFound();
             }
-            ViewData["FKDeptId"] = new SelectList(_context.Set<Department>(), "Id", "Id", employee.FKDeptId);
+            ViewData["FKDeptId"] = new SelectList(_context.Set<Department>(), "Id", "DeptName", employee.FKDeptId);
             return View(employee);
         }
 
@@ -91,7 +91,7 @@ namespace HrDbProject.Views
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FKDeptId,EmpName,Salary,IsActive")] Employee employee)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FKDeptId,EmpName,Salary,IsActive,Age")] Employee employee)
         {
             if (id != employee.Id)
             {
@@ -118,7 +118,7 @@ namespace HrDbProject.Views
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FKDeptId"] = new SelectList(_context.Set<Department>(), "Id", "Id", employee.FKDeptId);
+            ViewData["FKDeptId"] = new SelectList(_context.Set<Department>(), "Id", "DeptName", employee.FKDeptId);
             return View(employee);
         }
 
@@ -148,7 +148,7 @@ namespace HrDbProject.Views
         {
             if (_context.Employees == null)
             {
-                return Problem("Entity set 'HrDbProjectContext.Employee'  is null.");
+                return Problem("Entity set 'HrDbProjectContext.Employees'  is null.");
             }
             var employee = await _context.Employees.FindAsync(id);
             if (employee != null)
