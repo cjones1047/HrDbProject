@@ -13,7 +13,7 @@ namespace HrDbProject.Models
 
         public bool IsActive { get; set; }
 
-        public ICollection<Employee> Employees { get; set; }
+        public ICollection<Employee>? Employees { get; set; }
 
     }
 
