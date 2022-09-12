@@ -12,31 +12,32 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="FKDeptId" class="control-label"></label>
+            <div class="form-group mb-3">
+                <label asp-for="FKDeptId" class="control-label">Department</label>
                 <select asp-for="FKDeptId" class ="form-control" asp-items="ViewBag.FKDeptId"></select>
             </div>
-            <div class="form-group">
-                <label asp-for="EmpName" class="control-label"></label>
+            <div class="form-group mb-3">
+                <label asp-for="EmpName" class="control-label">Employee Name</label>
                 <input asp-for="EmpName" class="form-control" />
                 <span asp-validation-for="EmpName" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Salary" class="control-label"></label>
-                <input asp-for="Salary" class="form-control" />
-                <span asp-validation-for="Salary" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
-                </label>
-            </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="Age" class="control-label"></label>
                 <input asp-for="Age" class="form-control" />
                 <span asp-validation-for="Age" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
+                <label asp-for="Salary" class="control-label"></label>
+                <input asp-for="Salary" class="form-control" />
+                <span asp-validation-for="Salary" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check mb-3">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsActive" />
+                    Are they an active employee?
+                </label>
+            </div>
+            <div class="form-group mb-3">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
