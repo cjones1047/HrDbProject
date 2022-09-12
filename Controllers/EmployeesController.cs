@@ -48,7 +48,7 @@ namespace HrDbProject.Controllers
         // GET: Employees/Create
         public IActionResult Create()
         {
-            ViewData["FKDeptId"] = new SelectList(_context.Set<Department>(), "Id", "DeptName");
+            ViewData["FKDeptId"] = new SelectList(_context.Departments, "Id", "DeptName");
             return View();
         }
 
@@ -65,7 +65,7 @@ namespace HrDbProject.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FKDeptId"] = new SelectList(_context.Set<Department>(), "Id", "DeptName", employee.FKDeptId);
+            ViewData["FKDeptId"] = new SelectList(_context.Departments, "Id", "DeptName", employee.FKDeptId);
             return View(employee);
         }
 
@@ -82,7 +82,7 @@ namespace HrDbProject.Controllers
             {
                 return NotFound();
             }
-            ViewData["FKDeptId"] = new SelectList(_context.Set<Department>(), "Id", "DeptName", employee.FKDeptId);
+            ViewData["FKDeptId"] = new SelectList(_context.Departments, "Id", "DeptName", employee.FKDeptId);
             return View(employee);
         }
 
@@ -118,7 +118,7 @@ namespace HrDbProject.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FKDeptId"] = new SelectList(_context.Set<Department>(), "Id", "DeptName", employee.FKDeptId);
+            ViewData["FKDeptId"] = new SelectList(_context.Departments, "Id", "DeptName", employee.FKDeptId);
             return View(employee);
         }
 
